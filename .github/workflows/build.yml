@@ -228,7 +228,12 @@ jobs:
           - run: cmake --build build/
           - run: ctest --output-on-failure --test-dir build/
           - run: cmake --install build --prefix build/install
-
+          - name: Upload a Build Artifact
+          - uses: actions/upload-artifact@v4.0.0
+          - with:
+             path: build/install
+             compression-level: 9
+             
     mac:
         runs-on: macos-11
         strategy:
